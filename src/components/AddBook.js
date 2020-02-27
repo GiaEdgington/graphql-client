@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { graphql } from 'react-apollo';
-import {getAuthorsQuery} from '../queries/queries';
+import {getAuthorsQuery, addBookMutation} from '../queries/queries';
 
 
 class AddBook extends Component {
