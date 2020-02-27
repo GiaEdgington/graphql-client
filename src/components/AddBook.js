@@ -43,4 +43,4 @@ class AddBook extends Component {
     }
 }
 
-export default AddBook;
+export default graphql(getAuthorsQuery)(AddBook);
