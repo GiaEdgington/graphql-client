@@ -6,6 +6,15 @@ import {getAuthorsQuery, addBookMutation} from '../queries/queries';
 
 class AddBook extends Component {
 
+    constructor(props){
+        super(props);
+        this.state={
+            name: "",
+            genre: "",
+            authorId: ""
+        }
+    }
+
     displayAuthors(){
         //data is two queries, need to refer to specific query (name given)
         var data =this.props.getAuthorsQuery;
@@ -18,31 +27,36 @@ class AddBook extends Component {
         }
     }
 
+    submitForm = (e) => {
+        e.preventDefault();
+        console.log(this.state);
+    }
+
     render(){
         //console.log(this.props);
-        console.log(this.props)
+        //console.log(this.props)
         return(
-            <form className="add-book">
+            <form className="add-book" onSubmit={this.submitForm}>
 
                 <div className="field">
                     <label>Book name:</label>
-                    <input type="text"/>
+                    <input type="text" onChange={(e) => this.setState({name: e.target.value})}/>
                 </div>
 
                 <div className="field">
                     <label>Genre:</label>
-                    <input type="text"/>
+                    <input type="text" onChange={(e) => this.setState({genre: e.target.value})}/>
                 </div>
 
                 <div className="field">
                     <label>Author:</label>
-                    <select>
+                    <select onChange={(e) => this.setState({author: e.target.value})}>
                         <option>Select author</option>
                         {this.displayAuthors()}
                     </select>
                 </div>
 
-                <button></button>
+                <button>Submit</button>
 
             </form>
         );
